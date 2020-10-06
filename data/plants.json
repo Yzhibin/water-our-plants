@@ -1,0 +1,14 @@
+[
+  {
+    "name": "plant A",
+    "location": 0,
+    "days": [1, 2, 3, 5]
+  },
+  {
+    "name": "plant B",
+    "location": 0,
+    "days": [1, 2, 3, 5]
+  },
+  { "name": "plant C", "location": 1, "days": [2] },
+  { "name": "plant D", "location": 2, "days": [], "keepMoist": true }
+]
