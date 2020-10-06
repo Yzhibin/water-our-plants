@@ -1,14 +1,20 @@
 [
   {
-    "name": "plant A",
+    "name": "Monstera Deliciosa",
     "location": 0,
-    "days": [1, 2, 3, 5]
+    "days": [1]
   },
   {
-    "name": "plant B",
+    "name": "Bird of Paradise",
     "location": 0,
-    "days": [1, 2, 3, 5]
+    "days": [1, 3, 5]
   },
-  { "name": "plant C", "location": 1, "days": [2] },
-  { "name": "plant D", "location": 2, "days": [], "keepMoist": true }
+  {
+    "name": "Philodendron Selloum",
+    "location": 0,
+    "days": [],
+    "keepMoist": true
+  },
+  { "name": "Fiddle-Leaf Fig", "location": 1, "days": [1] },
+  { "name": "Aglaonema Pink", "location": 2, "days": [1, 3, 5] }
 ]
