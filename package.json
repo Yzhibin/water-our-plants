@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "format": "prettier --write \"**/*+(rc|.js|.json)\""
+    "format": "prettier --write \"**/*+(rc|.js|.json|.md)\""
   },
   "devDependencies": {
     "prettier": "^2.1.2"
