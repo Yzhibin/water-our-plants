@@ -23,6 +23,7 @@ if (!Array.isArray(plants)) {
 // Every weekdays at 2pm
 cron.schedule(cronPattern, () => {
   const msg = prepare();
+  if (!msg) return;
   send(msg);
 });
 
@@ -58,7 +59,12 @@ function prepare() {
     return `${acc} ${n} ${be} ${cur}.`;
   }, '');
 
-  return `Hi guys, don't forget to water ${names} today. Also, make sure the soil is mosit for ${alsoNames}. ${describeLocations}`;
+  if (waterToday.length === 0 && keepMoist.length === 0) return;
+
+  if (waterToday.length === 0)
+    return `Coo coo. Make sure the soil is mosit for ${alsoNames}. ${describeLocations}`;
+  else
+    return `Coo coo. Don't forget to water ${names} today. Also, make sure the soil is mosit for ${alsoNames}. ${describeLocations}`;
 }
 
 async function send(message) {
