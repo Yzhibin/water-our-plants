@@ -1,6 +1,8 @@
 require('dotenv').config();
-const cron = require('node-cron');
 const xoxb = process.env.XOXB;
+const channel = process.env.CHANNEL;
+const cronPattern = process.env.CRON_PATTERN || '0 0 14 * * 2-6';
+const cron = require('node-cron');
 const plants = require('./data/plants.json');
 const locations = require('./data/locations');
 
@@ -9,13 +11,20 @@ if (!xoxb) {
   return;
 }
 
+if (!channel) {
+  console.log('Recipient channel not specified.');
+}
+
 if (!Array.isArray(plants)) {
   console.log('plant.json is not an array.');
   return;
 }
 
 // Every weekdays at 2pm
-cron.schedule('0 0 14 * * 2-6', prepare);
+cron.schedule(cronPattern, () => {
+  const msg = prepare();
+  send(msg);
+});
 
 function prepare() {
   const getNames = (arr) =>
@@ -49,13 +58,8 @@ function prepare() {
     return `${acc} ${n} ${be} ${cur}.`;
   }, '');
 
-  let msg = `Hi guys, don't forget to water ${names} today. Also, make sure the soil is mosit for ${alsoNames}. ${describeLocations}`;
-
-  console.log(msg);
-  //   send(msg);
+  return `Hi guys, don't forget to water ${names} today. Also, make sure the soil is mosit for ${alsoNames}. ${describeLocations}`;
 }
-
-prepare();
 
 async function send(message) {
   const bent = require('bent');
@@ -72,10 +76,8 @@ async function send(message) {
     200, //response status filter
   );
 
-  const res = await post('/chat.postMessage', {
-    channel: 'U011DPFMJB0',
+  post('/chat.postMessage', {
+    channel,
     text: message,
   });
-
-  console.log(res);
 }
