@@ -20,7 +20,8 @@ if (!Array.isArray(plants)) {
   return;
 }
 
-// Every weekdays at 2pm
+// console.log(prepare());
+
 cron.schedule(cronPattern, () => {
   const msg = prepare();
   if (!msg) return;
