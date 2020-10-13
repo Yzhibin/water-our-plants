@@ -1,5 +1,1 @@
-module.exports = [
-  'next to the door',
-  'at pantry corner',
-  'on the standing desk',
-];
+module.exports = ['around the fountain', 'on standing desk'];

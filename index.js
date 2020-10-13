@@ -65,7 +65,7 @@ function prepare() {
   if (waterToday.length === 0)
     return `Coo coo. Make sure the soil is mosit for ${alsoNames}. ${describeLocations}`;
   else
-    return `Coo coo. Don't forget to water ${names} today. Also, make sure the soil is mosit for ${alsoNames}. ${describeLocations}`;
+    return `Coo coo. Don't forget to water ${names} today. Also, make sure the soil is moist for ${alsoNames}. ${describeLocations}`;
 }
 
 async function send(message) {
@@ -83,8 +83,10 @@ async function send(message) {
     200, //response status filter
   );
 
-  post('/chat.postMessage', {
+  const res = await post('/chat.postMessage', {
     channel,
     text: message,
   });
+
+  console.log(res);
 }
