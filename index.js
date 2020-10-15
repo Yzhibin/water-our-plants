@@ -63,7 +63,7 @@ function prepare() {
   if (waterToday.length === 0 && keepMoist.length === 0) return;
 
   if (waterToday.length === 0)
-    return `Coo coo. Make sure the soil is mosit for ${alsoNames}. ${describeLocations}`;
+    return `Coo coo. Make sure the soil is moist for ${alsoNames}. ${describeLocations}`;
   else
     return `Coo coo. Don't forget to water ${names} today. Also, make sure the soil is moist for ${alsoNames}. ${describeLocations}`;
 }
